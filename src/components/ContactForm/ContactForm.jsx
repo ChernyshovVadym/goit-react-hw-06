@@ -1,9 +1,12 @@
 import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
 import { useId } from "react";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
 import css from "./ContactForm.module.css";
+
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,19 +24,25 @@ const initionValus = {
   name: "",
   number: "",
 };
+const ContactForm = () => {
+  const dispatch = useDispatch();
 
-const ContactForm = ({ addContact }) => {
-  const nameFieldId = useId();
-  const numberFieldId = useId();
   const handleSubmit = (values, actions) => {
-    const newContact = {
-      name: values.name,
-      number: values.number,
-      id: nanoid(),
-    };
-    addContact(newContact);
+    dispatch(addContact(values.name, values.number));
     actions.resetForm();
   };
+  const nameFieldId = useId();
+  const numberFieldId = useId();
+  // const ContactForm = ({ addContact }) => {
+  //   const handleSubmit = (values, actions) => {
+  //     const newContact = {
+  //       name: values.name,
+  //       number: values.number,
+  //
+  //     };
+  //     addContact(newContact);
+  //     actions.resetForm();
+  //   };
   return (
     <Formik
       initialValues={initionValus}
