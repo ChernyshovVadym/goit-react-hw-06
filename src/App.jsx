@@ -7,6 +7,7 @@ import ContactForm from "./components/ContactForm/ContactForm";
 // import { selectContacts } from "./redux/selectors";
 
 const App = () => {
+  // const contacts = useSelector(selectContacts);
   // const [contacts, setContacts] = useState(
   //   // () => JSON.parse(localStorage.getItem("saveContacts")) ?? initContacts
   // );
