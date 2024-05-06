@@ -9,9 +9,9 @@ const SearchBox = () => {
   // const inputId = useId();
   const dispatch = useDispatch();
   const filter = useSelector(selectFilters);
-
+  console.log(filter);
   const handleChange = (e) => {
-    dispatch(changeFilter(e.value.trim));
+    dispatch(changeFilter(e.target.value));
   };
   return (
     <div className={css.box}>

@@ -28,11 +28,15 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values.name, values.number));
+    const name = values.name;
+    const number = values.number;
+    console.log(name, number);
+    dispatch(addContact({ name, number }));
     actions.resetForm();
   };
   const nameFieldId = useId();
   const numberFieldId = useId();
+
   // const ContactForm = ({ addContact }) => {
   //   const handleSubmit = (values, actions) => {
   //     const newContact = {
